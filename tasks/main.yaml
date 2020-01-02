@@ -1,6 +1,13 @@
 # So we get the new IP address
 - meta: refresh_inventory
 
+# If this returns true, skip the rest of provisioning.
+- name: Check if Ansible user exists
+  command: ssh -q -o BatchMode=yes -o ConnectTimeout=3 {{ ansible_user_2 }}@{{ ansible_host }} "echo OK"
+  changed_when: false
+  failed_when: false
+  register: check_ansible_user
+
 - block:
   - name: Wait for Linode to listen on port 22
     wait_for:
@@ -30,4 +37,4 @@
     authorized_key:
       user: "{{ ansible_user_2 }}"
       key: "{{ ansible_authorized_keys }}"
-  when: check_ansible_user.rc is defined and check_ansible_user.rc != 0
+  when: check_ansible_user.rc != 0
