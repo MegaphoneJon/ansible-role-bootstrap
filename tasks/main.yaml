@@ -9,7 +9,7 @@
   register: check_ansible_user
 
 - block:
-  - name: Wait for Linode to listen on port 22
+  - name: Wait for VM to listen on port 22
     wait_for:
       state: started
       host: "{{ ansible_host }}"
