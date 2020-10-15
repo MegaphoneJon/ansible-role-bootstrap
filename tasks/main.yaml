@@ -22,6 +22,13 @@
       generate_ssh_key: yes
     tags: bootstrap
 
+  - name: Install sudo
+    connection: ssh
+    apt:
+      name: sudo
+      # 86400 seconds = 24 hours
+      cache_valid_time: 86400
+
   - name: Add Ansible user to sudo
     connection: ssh
     lineinfile:

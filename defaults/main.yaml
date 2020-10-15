@@ -1,1 +1,1 @@
-ansible_authorized_keys: "{{ lookup('file', 'files/megaphonetech.pub') }}" 
+ansible_authorized_keys: "https://ssh.megaphonetech.com/megaphonetech.pub"
