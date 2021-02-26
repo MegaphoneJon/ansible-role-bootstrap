@@ -1,1 +1,2 @@
 ansible_authorized_keys: "https://ssh.megaphonetech.com/megaphonetech.pub"
+bootstrap_user: "root"
