@@ -37,8 +37,9 @@
   - name: Add Ansible user to sudo
     connection: ssh
     lineinfile:
-      dest: /etc/sudoers
+      dest: /etc/sudoers.d/ansible
       state: present
+      create: yes
       regexp: "^{{ ansible_user_2 }}"
       line: "{{ ansible_user_2 }} ALL=(ALL) NOPASSWD: ALL"
       validate: 'visudo -cf %s'
