@@ -24,6 +24,8 @@
     user: 
       name: "{{ ansible_user_2 }}"
       generate_ssh_key: yes
+      ssh_key_file: .ssh/id_ed25519
+      ssh_key_type: ed25519
     become: yes
 
   - name: Install sudo
