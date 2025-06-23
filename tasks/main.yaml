@@ -47,10 +47,12 @@
       validate: 'visudo -cf %s'
     become: yes
 
-  - name: Add authorized keys to Ansible user
-    connection: ssh
-    authorized_key:
-      user: "{{ ansible_user_2 }}"
-      key: "{{ ansible_authorized_keys }}"
-    become: yes
   when: check_ansible_user.rc != 0
+
+- name: Add authorized keys to Ansible user
+  connection: ssh
+  authorized_key:
+    user: "{{ ansible_user_2 }}"
+    key: "{{ ansible_authorized_keys }}"
+  become: yes
+  tags: ansible-authorized-keys
